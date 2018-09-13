@@ -155,6 +155,7 @@ class TwitterCardIE(TwitterBaseIE):
             video_id, 'Downloading API data',
             headers={
                 'Authorization': 'Bearer ' + bearer_token,
+                'User-Agent': 'Mozilla/5.0 (Android 6.0.1; Mobile; rv:54.0) Gecko/54.0 Firefox/54.0',
             })
         media_info = try_get(api_data, lambda o: o['extended_entities']['media'][0]['video_info']) or {}
         return self._parse_media_info(media_info, video_id)
@@ -233,6 +234,7 @@ class TwitterCardIE(TwitterBaseIE):
         if not formats:
             headers = {
                 'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%2F40K4moUkGsoc%3DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw',
+                'User-Agent': 'Mozilla/5.0 (Android 6.0.1; Mobile; rv:54.0) Gecko/54.0 Firefox/54.0',
                 'Referer': url,
             }
             ct0 = self._get_cookies(url).get('ct0')
